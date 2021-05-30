@@ -18,9 +18,9 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      items,
+      items: [...items].sort(() => 0.5 - Math.random()),
     },
-    revalidate: 10,
+    revalidate: 1,
   };
 };
 
