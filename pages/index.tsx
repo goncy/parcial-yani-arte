@@ -10,15 +10,15 @@ interface Props {
 }
 
 const Home: React.FC<Props> = ({items}) => {
-  return <Grid items={items} />;
+  return <Grid items={[...items].sort(() => 0.5 - Math.random())} />;
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const items = await api.list();
+  const items = await api.all();
 
   return {
     props: {
-      items: [...items].sort(() => 0.5 - Math.random()),
+      items,
     },
   };
 };
