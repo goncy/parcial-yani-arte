@@ -15,6 +15,15 @@ const api = {
           movement: movement.replace(/[^\w\s]/g, ""),
         };
       }),
+  movement: (_movement: string) => api.all().filter(({movement}) => movement === _movement),
+  movements: () =>
+    api
+      .all()
+      .reduce(
+        (movements, item) =>
+          movements.includes(item.movement) ? movements : movements.concat(item.movement),
+        [],
+      ),
 };
 
 export default api;
