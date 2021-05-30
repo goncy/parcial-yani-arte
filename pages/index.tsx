@@ -15,7 +15,7 @@ const Home: React.FC<Props> = ({items}) => {
   return <Grid items={sortedItems} />;
 };
 
-export const getServerSideProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const items = await api.list();
 
   return {
