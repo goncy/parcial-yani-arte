@@ -1,5 +1,5 @@
 import * as React from "react";
-import {GetServerSideProps} from "next";
+import {GetStaticProps} from "next";
 
 import api from "../api";
 import Grid from "../components/Grid";
@@ -10,15 +10,17 @@ interface Props {
 }
 
 const Home: React.FC<Props> = ({items}) => {
-  return <Grid items={items} />;
+  const sortedItems = [...items].sort(() => 0.5 - Math.random());
+
+  return <Grid items={sortedItems} />;
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetStaticProps = async () => {
   const items = await api.list();
 
   return {
     props: {
-      items: items.sort(() => 0.5 - Math.random()),
+      items,
     },
   };
 };
