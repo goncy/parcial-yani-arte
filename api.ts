@@ -15,6 +15,7 @@ export default {
             name: name.replace(/[^\w\s]/g, ""),
             movement: movement.replace(/[^\w\s]/g, ""),
           };
-        }),
+        })
+        .sort(() => 0.5 - Math.random()),
     ),
 };

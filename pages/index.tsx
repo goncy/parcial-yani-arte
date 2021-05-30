@@ -10,9 +10,7 @@ interface Props {
 }
 
 const Home: React.FC<Props> = ({items}) => {
-  const sortedItems = [...items].sort(() => 0.5 - Math.random());
-
-  return <Grid items={sortedItems} />;
+  return <Grid items={items} />;
 };
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -22,6 +20,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       items,
     },
+    revalidate: 10,
   };
 };
 
